@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include ('partials/head.html') %>
+</head>
+
+<body>
+
+    <%- include ('partials/navigation.html') %>
+
+    <div class="container p-4">
+        <div class="card text-center p-4">
+            <div class="card-body">
+                <div class="card-form">
+                    <form action="/upload" method="POST" enctype="multipart/form-data" class="form-group p-4">
+                        <input type="file" name="image" class="form-control-file">
+                        <br>
+                        <button type="submit" class="btn btn-primary p-2">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
