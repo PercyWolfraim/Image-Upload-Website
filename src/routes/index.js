@@ -1,16 +1,23 @@
 const {Router} = require('express');
 const router = Router();
 
-router.get('/',(req,res) =>{
-    res.render('index.html',{title: 'Subida de imagenes'});
-});
+const Image = require('../model/Image');
 
-router.get('/upload',(req,res)=>{
-    res.render('upload.html',{title: 'Imagenes subidas'});
-});
-
-router.post('/upload',(req,res) =>{
+router.get('/', async (req,res) =>{
+    const image = await Image.find();
+    res.render('index',{title: 'Uploaded', image});
     
 });
 
+router.get('/upload', async (req,res)=>{
+    res.render('upload',
+    {title: 'Image upload'});
+});
+
+router.post('/upload', async (req,res)=>{
+    const image = new Image();
+    image.imagePath = '/uploads/' + req.file.filename;
+    await image.save();
+    res.redirect('/');
+});
 module.exports = router;
