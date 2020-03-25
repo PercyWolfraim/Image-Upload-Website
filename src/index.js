@@ -39,7 +39,7 @@ fileFilter: (req,file,cb)=>{
 app.use(morgan('dev'));
 
 //static files
-app.set(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'public')));
 
 //routes
 app.use(require('./routes/index'));
